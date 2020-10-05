@@ -37,6 +37,15 @@ namespace Kogane.Internal
 
 			foreach ( var n in children )
 			{
+				var gameObject             = n.gameObject;
+				var isPartOfPrefabInstance = PrefabUtility.IsPartOfPrefabInstance( gameObject );
+				var isPrefabInstanceRoot   = PrefabUtility.IsAnyPrefabInstanceRoot( gameObject );
+
+				// 通常のシーンの Hierarchy において
+				// プレハブのインスタンスのルートであれば四捨五入の対象
+				// プレハブのインスタンスの子であれば対象外
+				if ( isPartOfPrefabInstance && !isPrefabInstanceRoot ) continue;
+
 				RoundImpl( n );
 			}
 		}
