@@ -23,7 +23,7 @@ namespace Kogane.Internal
 
 			RoundImpl( t );
 		}
-		
+
 		/// <summary>
 		/// 子オブジェクトも含む RectTransform のパラメータを四捨五入します
 		/// </summary>
@@ -40,17 +40,17 @@ namespace Kogane.Internal
 				RoundImpl( n );
 			}
 		}
-		
+
 		/// <summary>
 		/// RectTransform のパラメータを四捨五入します
 		/// </summary>
 		private static void RoundImpl( RectTransform t )
 		{
-			var localPosition = t.localPosition;
-			localPosition.x = Mathf.Round( localPosition.x );
-			localPosition.y = Mathf.Round( localPosition.y );
-			localPosition.z = Mathf.Round( localPosition.z );
-			t.localPosition = localPosition;
+			var anchoredPosition3D = t.anchoredPosition3D;
+			anchoredPosition3D.x = Mathf.Round( anchoredPosition3D.x );
+			anchoredPosition3D.y = Mathf.Round( anchoredPosition3D.y );
+			anchoredPosition3D.z = Mathf.Round( anchoredPosition3D.z );
+			t.anchoredPosition3D = anchoredPosition3D;
 
 			var sizeDelta = t.sizeDelta;
 			sizeDelta.x = Mathf.Round( sizeDelta.x );
